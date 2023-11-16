@@ -10,7 +10,7 @@ install: build
 	python3 setup.py install
 
 documentation:
-	@mkdir -p ./documentation/; cd ./documentation/; pdoc --html ../pwndocapi/ --force
+	@mkdir -p ./documentation/; pdoc -o ./documentation/ ./pwndocapi/
 
 build:
 	python3 setup.py sdist bdist_wheel
