@@ -102,11 +102,12 @@ class API(object):
     def audits_get_by_id(self, _audit_id):  # ok
         return self.__api_get("/api/audits/%s" % _audit_id)
 
-    def audit_add_finding(self, _audit_id, title, vulnType, category, description, observation, remediation, references, remediationComplexity, priority, poc, scope, cvssv3, customFields=[]):
+    def audit_add_finding(self, _audit_id, title, pentester, vulnType, category, description, observation, remediation, references, remediationComplexity, priority, poc, scope, cvssv3, customFields=[]):
         return self.__api_post(
             "/api/audits/%s/findings" % _audit_id,
             jsondata={
                 "title": title,
+                "pentester": pentester,
                 "vulnType": vulnType,
                 "category": category,
                 "description": description,
@@ -146,6 +147,16 @@ class API(object):
         return self.__api_put("/api/audits/%s" % _audit_id, jsondata={
             "_id": _audit_id
         })
+
+    def audit_add_image(self, _audit_id, image_data, name):
+        return self.__api_post(
+            "/api/images",
+            jsondata={
+                "value": image_data,
+                "name": name,
+                "auditId": _audit_id
+            }
+        )
 
     # Data ============================================================================
 
