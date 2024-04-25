@@ -117,8 +117,6 @@ class API(object):
                 "remediationComplexity": remediationComplexity,
                 "priority": priority,
                 "cvssv3": cvssv3,
-                # "cvssScore": cvssScore,
-                # "cvssSeverity": cvssSeverity,
                 "poc": poc,
                 "scope": scope,
                 "customFields": customFields
@@ -147,13 +145,13 @@ class API(object):
         return self.__api_put("/api/audits/%s" % _audit_id, jsondata={
             "_id": _audit_id
         })
-
-    def audit_add_image(self, _audit_id, image_data, name):
+    
+    def audit_add_image(self, _audit_id, image_datastring, filename):
         return self.__api_post(
             "/api/images",
             jsondata={
-                "value": image_data,
-                "name": name,
+                "value": image_datastring,
+                "name": filename,
                 "auditId": _audit_id
             }
         )
