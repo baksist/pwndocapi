@@ -102,12 +102,13 @@ class API(object):
     def audits_get_by_id(self, _audit_id):  # ok
         return self.__api_get("/api/audits/%s" % _audit_id)
 
-    def audit_add_finding(self, _audit_id, title, pentester, vulnType, category, description, observation, remediation, references, remediationComplexity, priority, poc, scope, cvssv3, customFields=[]):
+    def audit_add_finding(self, _audit_id, title, pentester, status, vulnType, category, description, observation, remediation, references, remediationComplexity, priority, poc, scope, cvssv3, customFields=[]):
         return self.__api_post(
             "/api/audits/%s/findings" % _audit_id,
             jsondata={
                 "title": title,
                 "pentester": pentester,
+                "status": status,
                 "vulnType": vulnType,
                 "category": category,
                 "description": description,

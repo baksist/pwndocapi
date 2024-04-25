@@ -25,7 +25,7 @@ class Audit(object):
     def delete(self):
         self.api.audits_delete(self._id)
 
-    def add_finding(self, title, pentester, vulnType, category, description, observation, remediation, references, remediationComplexity, priority, poc, scope, cvssv3, customFields=[]):
+    def add_finding(self, title, pentester, status, vulnType, category, description, observation, remediation, references, remediationComplexity, priority, poc, scope, cvssv3, customFields=[]):
         # scope = "<ul>" + "".join(["<li><p>%s</p></li>" % vt for vt in scope]) + "</ul>"
         # this was breaking the migration script
         # TODO: perhaps validate scope with regex from frontend?
@@ -34,6 +34,7 @@ class Audit(object):
             self._id,
             title=title,
             pentester=pentester,
+            status=status,
             vulnType=vulnType,
             category=category,
             description=description,
